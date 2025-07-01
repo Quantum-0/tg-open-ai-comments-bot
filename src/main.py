@@ -53,6 +53,9 @@ async def chat_handler(message: Message):
     close_messages = msg_storage.get_neighbours(message)
     full_prompt = await ai.generate_prompt(message, post_bot_replying_to, thread_history, close_messages, message.bot.id)
     response_msg = await ai.get_response(full_prompt)
+    response_msg = response_msg.strip()
+    if not response_msg:
+        return
     resp = await message.reply(text=response_msg)
     msg_storage.save_message(resp)
 
