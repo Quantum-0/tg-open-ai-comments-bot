@@ -1,0 +1,19 @@
+---
+services:
+  bot:
+    container_name: tg-open-ai-comments-bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./src:/src
+      - ./prompt.txt:./prompt.txt
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+#          cpus: '1'
+#          memory: 512M
+          memory: 2048M
