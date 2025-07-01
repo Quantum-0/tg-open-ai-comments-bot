@@ -9,7 +9,7 @@ services:
       - .env
     volumes:
       - ./src:/src
-      - ./prompt.txt:./prompt.txt
+      - ./prompt.txt:/prompt.txt
     deploy:
       resources:
         limits:
