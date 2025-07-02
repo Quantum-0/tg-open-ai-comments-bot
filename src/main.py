@@ -46,7 +46,7 @@ async def chat_handler(message: Message):
         return
     if random.random() > settings.response_chance and not (
         message.reply_to_message and message.reply_to_message.from_user.id == message.bot.id
-    ):
+    ) and ("арбуз" not in message.text.lower() and me.username not in message.text):
         return
     post_bot_replying_to = msg_storage.get_message(message.message_thread_id)
     thread_history = msg_storage.get_thread(message)
@@ -62,6 +62,8 @@ async def chat_handler(message: Message):
 
 
 async def main():
+    global me
+    me = await bot.get_me()
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
