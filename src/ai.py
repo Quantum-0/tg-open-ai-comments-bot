@@ -66,7 +66,7 @@ async def generate_prompt(
 
 
 aicli = OpenAI(
-    api_key="sk-aitunnel-h69IfJlwEIW9aX7834qp8cD7mO74LT6B", # settings.openai_api_key,
+    api_key= settings.openai_api_key.get_secret_value(),
     base_url=settings.openai_base_url,
 )
 
